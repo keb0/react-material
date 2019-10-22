@@ -21,6 +21,11 @@ const useStyles = makeStyles(theme => ({
       display: 'block',
     },
   },
+  header: {
+    top: 0,
+    left: 0,
+    position: 'fixed',
+  },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -59,20 +64,19 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function SearchBar(props) {
-  const initialState = ''
   const classes = useStyles()
-  const [inputValue, setValue] = useState(initialState)
+  const [inputValue, setValue] = useState('')
 
   const onFormSubmit = e => {
     e.preventDefault()
 
-    props.handleSubmit(inputValue)
-    setValue(initialState)
+    props.handleSubmit({ word: inputValue })
+    setValue('')
   }
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar className={classes.header}>
         <Toolbar>
           <IconButton
             edge="start"
