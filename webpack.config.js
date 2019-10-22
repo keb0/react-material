@@ -1,11 +1,11 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
   },
   module: {
     rules: [
@@ -17,21 +17,25 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: [
-                '@babel/preset-env',
-                '@babel/preset-react'
+                [
+                  '@babel/preset-env',
+                  {
+                    useBuiltIns: 'entry',
+                    corejs: 3,
+                  },
+                ],
+                '@babel/preset-react',
               ],
-              plugins: [
-                '@babel/plugin-proposal-class-properties'
-              ]
-            }
-          }
-        ]
-      }
-    ]
+              plugins: ['@babel/plugin-proposal-class-properties'],
+            },
+          },
+        ],
+      },
+    ],
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 9000
-  }
-};
+    port: 9000,
+  },
+}

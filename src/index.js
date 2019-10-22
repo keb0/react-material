@@ -1,16 +1,7 @@
 import React from 'react'
-import * as ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom'
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 import App from './App'
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <h1>Hello World</h1>
-//         <App />
-//       </div>
-//     );
-//   }
-// }
 
 ReactDOM.render(<App />, document.getElementById('root'))
