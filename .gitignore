@@ -62,3 +62,6 @@ typings/
 
 # Todo
 todo.md
+
+# data
+dist/data.json
