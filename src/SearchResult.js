@@ -2,6 +2,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -11,6 +12,7 @@ import ImageIcon from '@material-ui/icons/Image'
 import Divider from '@material-ui/core/Divider'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
+import Hero from './Hero'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,19 +40,27 @@ export default function SearchResult(props) {
   return (
     <div>
       <Container className={classes.list} maxWidth="md">
-        {data.list.map((row, idx) => (
-          <List className={classes.root} key={idx.toString()}>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <ImageIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={row.title} secondary={row.description} />
-            </ListItem>
-            <Divider variant="inset" component="li" />
-          </List>
-        ))}
+        {data.list.length === 0 && data.flag === 1 ? (
+          <div>
+            <Typography>No Contents</Typography>
+          </div>
+        ) : data.list.length === 0 && data.flag === 0 ? (
+          <Hero />
+        ) : (
+          data.list.map((row, idx) => (
+            <List className={classes.root} key={idx.toString()}>
+              <ListItem>
+                <ListItemAvatar>
+                  <Avatar>
+                    <ImageIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary={row.title} secondary={row.description} />
+              </ListItem>
+              <Divider variant="inset" component="li" />
+            </List>
+          ))
+        )}
         <div>
           <Grid container direction="column" alignItems="center">
             {data.total === 0 ? (
