@@ -13,6 +13,7 @@ export default class App extends React.Component {
         total: 0,
         current: 0,
         list: [],
+        flag: 0,
       },
     }
   }
