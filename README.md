@@ -1,6 +1,6 @@
 # Usage
 
 ```
-npm run start
-localhost:9000
+npm run dev
+localhost:3000
 ````
